@@ -1,0 +1,18 @@
+
+@font-face {
+    font-family: SFRegular;
+    src: url("../fonts/SFProText-Regular.ttf") ;
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face{
+    font-family: "SFBold";
+    src: url("../fonts/SFProText-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+#root{
+    color: #dadada;
+    font-family: "SFRegular";
+}
