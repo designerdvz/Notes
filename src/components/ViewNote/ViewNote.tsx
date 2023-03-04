@@ -73,7 +73,7 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
                         <MDEditor
                             value={note?.text?.text}
                             autoFocus={false}
-                            onChange={onHandleChange(note?.text?.text)}
+                            onChange={(_, event) => onHandleChange(event?.target.value)}
                             previewOptions={{ skipHtml: true, escapeHtml: true, transformLinkUri: null, linkTarget: '_blank' }}
                         />
                         :
