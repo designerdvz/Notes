@@ -1,0 +1,56 @@
+.wrapper{
+    display: flex;
+    height: 30px;
+}
+.leftBar{
+    margin-left: 7px;
+    overflow: hidden;
+    width: 19%;
+}
+
+.rightBar{
+    padding-left: 15px;
+    padding-right: 10px;
+    display: flex;
+    overflow: hidden;
+    width: 79%;
+}
+.listImg{
+    height: 21px;
+    margin-right: 15px;
+}
+.squareImg{
+    height: 20px;
+}
+.basketImg{
+    height: 21px;
+    float: right;
+}
+
+.addImg {
+    height: 20px;
+    padding-left: 2%;
+}
+
+.registerImg{
+    height: 20px;
+    margin-left: 7vw;
+}
+.finder input {
+    padding-top: 4px;
+    border: none;
+    outline: none;
+    color: #dadada;
+    background-color: #222327;
+}
+
+.finder{
+    display: flex;
+    margin-bottom: 10px;
+    overflow: hidden;
+    margin-left: auto;
+    border: 1px solid #5c5c5c;
+    border-radius: 5px;
+    width: 220px;
+    height: 20px;
+}

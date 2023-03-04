@@ -5,46 +5,20 @@
     border-left: 2px solid black;
 }
 .content{
-    margin-left: 20px;
+    padding-left: 20px;
+    background-color: #1e1e1e;
 }
 .title{
     margin-top: 20px;
     background-color: #1e1e1e;
     font-family: "SFBold";
-    margin-top: 20px;
 }
-.bar{
-    padding-left: 15px;
-    padding-right: 10px;
-    display: flex;
-    overflow: hidden;
-}
-.addImg{
-    height: 20px;
-}
-.finderImg{
-    height: 14px;
-    align-self: flex-start;
-    padding: 3px;
-}
-.registerImg{
-    height: 20px;
-    margin-left: 7vw;
-}
-.finder{
-    display: flex;
-    margin-bottom: 10px;
-    overflow: hidden;
-    margin-left: auto;
-    border: 1px solid #5c5c5c;
-    border-radius: 5px;
-    width: 220px;
-    height: 20px;
-}
+
 textarea {
     font-family: inherit;
     font-size: inherit;
     resize: none;
+    height: 16px;
     color: #dadada;
     display: flex;
     border: none;
@@ -54,13 +28,7 @@ textarea:focus {
     border: none;
     outline: none;
 }
-.finder input {
-    padding-top: 4px;
-    border: none;
-    outline: none;
-    color: #dadada;
-}
+
 .text{
     background-color: #1e1e1e;
-
 }

@@ -1,0 +1,35 @@
+
+.moduleText{
+    background-color: #464646;
+    color: #dadada;
+    font-family: "SFBold";
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.moduleDelete{
+    background-color: #464646;
+    color: #dadada;
+    border: 1px solid #dadada;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "SFRegular";
+
+}
+.moduleDelete:hover{
+    background-color: #878686;
+}
+.moduleNotDelete{
+    background-color: #464646;
+    margin-left: 67px;
+    color: #dadada;
+    border: 1px solid #dadada;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "SFRegular";
+
+}
+.moduleNotDelete:hover{
+    background-color: #878686;
+}

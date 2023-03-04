@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import List from "./components/List/List";
 import ViewNote from "./components/ViewNote/ViewNote";
+import Header from "./components/Header/Header.js";
 
 export interface IItem {
     id: number,
@@ -53,10 +54,13 @@ const App = () => {
         return items?.find((el) => el.id === itemId)
     }
     return (
-        <div className="wrapper">
-            <List items={items} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId}/>
-            <ViewNote setItems={setItems} currentNote={getCurrentNote(items, currentNoteId)}/>
-        </div>
+        <>
+            <Header setItems={setItems} currentNoteId={currentNoteId}/>
+            <div className="wrapper">
+                <List items={items} setItems={setItems} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId}/>
+                <ViewNote setItems={setItems} currentNote={getCurrentNote(items, currentNoteId)}/>
+            </div>
+        </>
     )
 };
 

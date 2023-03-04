@@ -17,7 +17,7 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
     useEffect(() => {
         setNote(currentNote)
         setEditing(false)
-    }, [currentNote.id]);
+    }, [currentNote?.id]);
 
     useEffect(() => {
         return () => {
@@ -48,51 +48,26 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
         });
     }
 
-    const addNewNote = () => {
-        const newNote = {
-            id: Math.random,
-            title: "New Title",
-            time: "17:30",
-            text: {
-                text: "New text about note",
-                font_style: "bold",
-                font_size: 16
-            }
-        }
-        setItems((prevArr) => {
-            return [(...prevArr, newNote
-        )]
-        })
-    }
-
-
     return (
         <>
             <div className={s.wrapper}>
-                <div className={s.bar}>
-                    <img className={s.addImg} onClick={addNewNote} src={addImg}/>
-                    <img className={s.registerImg} src={registerImg}/>
-                    <div className={s.finder}>
-                        <img className={s.finderImg} src={finderImg}/>
-                        <input className={s.finderInput} placeholder="Поиск"/>
-                    </div>
-                </div>
                 <div onDoubleClick={() => {
                     setEditing(!isEditing)
                     setWasEdited(true);
                 }}>
                     {isEditing ?
                         <>
+                        <div className={s.content}>
                             <textarea value={note?.title} onChange={onHandleChange}
                                       className={s.title}></textarea>
                             <textarea value={note?.text?.text} onChange={onHandleChange} className={s.text}></textarea>
+                        </div>
                         </>
                         :
                         <>
                             <div className={s.content}>
-                                {note?.title}
-                                <br/>
-                                {note?.text?.text}
+                                <div className={s.title}>{note?.title}</div>
+                                <div className={s.text}>{note?.text?.text}</div>
                             </div>
                         </>
                     }
