@@ -19,6 +19,7 @@ const App = () => {
     const [currentNoteId, setCurrentNote] = useState<number>(0)
     const [isList, setIsList] = useState(true)
     const [edit, setEdit] = useState(false)
+    const [findText, setFindText] = useState('')
 
     const [items, setItems] = useState<IItem[]>([
         {
@@ -57,10 +58,10 @@ const App = () => {
     }
     return (
         <>
-            <Header setItems={setItems} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList} setEdit={setEdit}/>
+            <Header setItems={setItems} setFindText={setFindText} findText={findText} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList} setEdit={setEdit}/>
             <div className="wrapper">
-                <List items={items} setItems={setItems} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList}/>
-                <BlockNote items={items} setItems={setItems} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList} edit={edit} setEdit={setEdit}/>
+                <List items={items} setItems={setItems} setFindText={setFindText} findText={findText} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList}/>
+                <BlockNote items={items} setItems={setItems} setFindText={setFindText} findText={findText} setCurrentNote={setCurrentNote} currentNoteId={currentNoteId} isList={isList} setIsList={setIsList} edit={edit} setEdit={setEdit}/>
                 {isList && <ViewNote setItems={setItems} currentNote={getCurrentNote(items, currentNoteId)}/>}
             </div>
         </>

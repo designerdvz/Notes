@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from "./ViewNote.module.css"
-import addImg from "../../assets/edit.png"
-import registerImg from "../../assets/register.png"
-import finderImg from "../../assets/finder.png"
 import {IItem} from "../../App";
+import MDEditor from "@uiw/react-md-editor"
 
 interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
@@ -36,13 +34,13 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
         }
     })
 
-    const onHandleChange = (event) => {
+    const onHandleChange = (value) => {
         setNote((prevState) => {
             return {
                 ...prevState,
                 text: {
                     ...prevState?.text,
-                    text: event.target.value
+                    text: value
                 }
             }
         });
@@ -57,27 +55,32 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
                     setWasEdited(true)
                 }}>
                     {isEditing ?
-                        <>
-                            <div className={s.content}>
-                                <textarea value={note?.title}
-                                          onChange={onHandleChange}
-                                          className={s.title}
-                                ></textarea>
-                                <textarea
-                                    cols={500}
-                                    rows={30}
-                                    value={note?.text?.text}
-                                    onChange={onHandleChange}
-                                    className={s.text}
-                                ></textarea>
-                            </div>
-                        </>
+                        // <>
+                        //     <div className={s.content}>
+                        //         <textarea value={note?.title}
+                        //                   onChange={onHandleChange}
+                        //                   className={s.title}
+                        //         ></textarea>
+                        //         <textarea
+                        //             cols={500}
+                        //             rows={30}
+                        //             value={note?.text?.text}
+                        //             onChange={onHandleChange}
+                        //             className={s.text}
+                        //         ></textarea>
+                        //     </div>
+                        // </>
+                        <MDEditor
+                            value={note?.text?.text}
+                            autoFocus={false}
+                            onChange={onHandleChange(note?.text?.text)}
+                            previewOptions={{ skipHtml: true, escapeHtml: true, transformLinkUri: null, linkTarget: '_blank' }}
+                        />
                         :
                         <>
-                            <div className={s.content}>
-                                <div className={s.title}>{note?.title}</div>
-                                <div className={s.text}>{note?.text?.text}</div>
-                            </div>
+                            {/*<div className={s.content}>*/}
+                                <MDEditor.Markdown source={note?.text?.text} escapeHtml={true} skipHtml={true} transformLinkUri={null} />
+                            {/*</div>*/}
                         </>
                     }
                 </div>

@@ -8,15 +8,13 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import PostAddOutlinedIcon from '@mui/icons-material/PostAddOutlined';
 import FormatSizeOutlinedIcon from '@mui/icons-material/FormatSizeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import ModalDelete from "../Modal/Modal";
 
 interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
 }
 
-const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, setEdit}) => {
+const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, setEdit,setFindText, findText}) => {
     const addNewNote = () => {
         const newNote = {
             id: Math.random(),
@@ -49,6 +47,9 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
 
         const [open, setOpen] = useState(false);
 
+    const handleChangeFindText = (event) => {
+        setFindText(event.target.value)
+    }
     return (
         <>
         <div className={s.wrapper}>
@@ -70,7 +71,7 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
                 <span className={s.registerImg}><FormatSizeOutlinedIcon/></span>
                 <div className={s.finder}>
                       <span className={s.finderImg}><SearchOutlinedIcon fontSize="small"/></span>
-                    <input className={s.finderInput} placeholder="Поиск"/>
+                    <input value={findText} onChange={handleChangeFindText} className={s.finderInput} placeholder="Поиск"/>
                 </div>
             </div>
         </div>

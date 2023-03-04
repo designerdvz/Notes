@@ -10,7 +10,7 @@ interface IProps {
     currentNoteId: number,
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
 }
-const BlockNotes: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setItems, isList, setIsList, edit, setEdit}) => {
+const BlockNotes: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setItems, isList, setIsList, edit, setEdit,setFindText, findText}) => {
     const onChooseNote = (id: number): void => {
         setCurrentNote(id)
     }
@@ -23,7 +23,7 @@ const BlockNotes: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setI
         <>
             {!isList && !edit &&
                 <div className={s.wrapper}>
-                    {items?.map((item) => {
+                    { findText==""? items?.map((item) => {
                         return (
                             <div className={currentNoteId === item?.id ? s.selected : s.item}
                                  onClick={() => onChooseNote(item?.id)} onDoubleClick={() => setEdit(true)}
@@ -34,7 +34,19 @@ const BlockNotes: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setI
                                     </div>
                             </div>
                         )
-                    })}
+                    }) : items?.filter((el) => el.text.text.toLowerCase().indexOf(findText.toLowerCase())>=0).map((item) => {
+                        return (
+                            <div className={currentNoteId === item?.id ? s.selected : s.item}
+                                 onClick={() => onChooseNote(item?.id)} onDoubleClick={() => setEdit(true)}
+                                 key={item?.id}>
+                                <div className={s.title}>{item?.title}</div>
+                                <div className={s.text}>{item?.text?.text.substr(0, 15)}
+                                    <span>{item?.text?.text.length>15 ? '...' : ''}</span>
+                                </div>
+                            </div>
+                        )
+                    })
+                    }
                 </div>
             }
             {

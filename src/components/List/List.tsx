@@ -12,7 +12,17 @@ interface IProps {
     currentNoteId: number,
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
 }
-const List: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setItems, isList, setIsList}) => {
+
+const List: React.FC<IProps> = ({
+                                    items,
+                                    setCurrentNote,
+                                    currentNoteId,
+                                    setItems,
+                                    isList,
+                                    setIsList,
+                                    setFindText,
+                                    findText
+                                }) => {
     const onChooseNote = (id: number): void => {
         setCurrentNote(id)
     }
@@ -21,17 +31,29 @@ const List: React.FC<IProps> = ({items, setCurrentNote, currentNoteId,setItems, 
         <>
             {isList &&
                 <div className={s.wrapper}>
-                    {items?.map((item) => {
+                    {findText == "" ? items?.map((item) => {
                         return (
                             <div className={currentNoteId === item?.id ? s.selected : s.item}
                                  onClick={() => onChooseNote(item?.id)} key={item?.id}>
                                 <div className={s.title}>{item?.title}</div>
                                 <div className={s.text}>{item?.text?.text.substr(0, 15)}
-                                <span>{item?.text?.text.length>15 ? '...' : ''}</span>
+                                    <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
                                 </div>
                             </div>
                         )
-                    })}
+                    }) : items?.filter((el) => el.text.text.toLowerCase().indexOf(findText.toLowerCase()) >= 0).map((item) => {
+                        return (
+                            <div className={currentNoteId === item?.id ? s.selectedFound : s.itemFound}
+                                 onClick={() => onChooseNote(item?.id)}
+                                 key={item?.id}>
+                                <div className={s.title}>{item?.title}</div>
+                                <div className={s.text}>{item?.text?.text.substr(0, 15)}
+                                    <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
+                                </div>
+                            </div>
+                        )
+                    })
+                    }
                 </div>
             }
         </>
