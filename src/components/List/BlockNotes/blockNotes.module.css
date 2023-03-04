@@ -1,0 +1,45 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 200px;
+    background-color: #222327;
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+}
+.backToList{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.item {
+    background-color: #222327;
+    padding-left: 10px;
+    margin: 10px 1vw;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #464646;
+}
+
+.title{
+    font-family: "SFBold";
+    margin-top: 10px;
+}
+.title:hover {
+    cursor: pointer;
+}
+.text:hover {
+    cursor: default;
+}
+.selected {
+    padding-left: 10px;
+    background-color: #464646;
+    margin: 10px 1vw;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    border-bottom: 1px solid gray;
+}
+.selected {
+    background-color: #464646;
+}
+.selected div{
+    background-color: #464646;
+}

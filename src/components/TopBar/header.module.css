@@ -43,7 +43,15 @@
     color: #dadada;
     background-color: #222327;
 }
-
+.listSelect svg{
+    background-color:  #464646;
+    margin-right: 15px;
+    border-radius: 3px;
+}
+.squareSelect svg{
+    background-color:  #464646;
+    border-radius: 3px;
+}
 .finder{
     display: flex;
     margin-bottom: 10px;

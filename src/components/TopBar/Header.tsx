@@ -1,4 +1,4 @@
-import s from "../Header/header.module.css";
+import s from ".//header.module.css";
 
 import React, {useEffect, useState} from "react";
 import {IItem} from "../../App";
@@ -16,7 +16,7 @@ interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
 }
 
-const Header: React.FC<Props> = ({setItems, currentNoteId}) => {
+const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, setEdit}) => {
     const addNewNote = () => {
         const newNote = {
             id: Math.random(),
@@ -47,15 +47,19 @@ const Header: React.FC<Props> = ({setItems, currentNoteId}) => {
         pb: 3,
     };
 
-        const [open, setOpen] = React.useState(false);
-
+        const [open, setOpen] = useState(false);
 
     return (
         <>
         <div className={s.wrapper}>
             <div className={s.leftBar}>
-                <span className={s.listImg}><FormatListBulletedOutlinedIcon color="#dadada"/></span>
-                <span className={s.squareImg}><GridViewOutlinedIcon /></span>
+                <span className={isList? s.listSelect : s.listImg} onClick={() => {
+                    setIsList(true)
+                    setEdit(false)
+                }}><FormatListBulletedOutlinedIcon color="#dadada"/></span>
+                <span className={isList? s.squareImg : s.squareSelect} onClick={()=> {setIsList(false)
+                    setEdit(false)
+                }}><GridViewOutlinedIcon /></span>
                 <span className={s.basketImg} onClick={() => {
                     setOpen(true)
                 }}><DeleteOutlinedIcon/></span>

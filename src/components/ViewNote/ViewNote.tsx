@@ -51,17 +51,26 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
     return (
         <>
             <div className={s.wrapper}>
-                <div onDoubleClick={() => {
-                    setEditing(!isEditing)
-                    setWasEdited(true);
+                <div onClick={() => {
+                    setEditing(true)
+                }} onKeyDown={() => {
+                    setWasEdited(true)
                 }}>
                     {isEditing ?
                         <>
-                        <div className={s.content}>
-                            <textarea value={note?.title} onChange={onHandleChange}
-                                      className={s.title}></textarea>
-                            <textarea value={note?.text?.text} onChange={onHandleChange} className={s.text}></textarea>
-                        </div>
+                            <div className={s.content}>
+                                <textarea value={note?.title}
+                                          onChange={onHandleChange}
+                                          className={s.title}
+                                ></textarea>
+                                <textarea
+                                    cols={500}
+                                    rows={30}
+                                    value={note?.text?.text}
+                                    onChange={onHandleChange}
+                                    className={s.text}
+                                ></textarea>
+                            </div>
                         </>
                         :
                         <>

@@ -7,6 +7,7 @@
 .content{
     padding-left: 20px;
     background-color: #1e1e1e;
+    width: 85%;
 }
 .title{
     margin-top: 20px;
@@ -18,11 +19,12 @@ textarea {
     font-family: inherit;
     font-size: inherit;
     resize: none;
-    height: 16px;
     color: #dadada;
     display: flex;
     border: none;
     width: 100%;
+    overflow: hidden;
+    max-height: 800px;
 }
 textarea:focus {
     border: none;
