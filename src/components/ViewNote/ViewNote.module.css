@@ -19,7 +19,7 @@
     display: flex;
     overflow: hidden;
 }
-.editImg{
+.addImg{
     height: 20px;
 }
 .finderImg{
@@ -40,6 +40,19 @@
     border-radius: 5px;
     width: 220px;
     height: 20px;
+}
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+    color: #dadada;
+    display: flex;
+    border: none;
+    width: 100%;
+}
+textarea:focus {
+    border: none;
+    outline: none;
 }
 .finder input {
     padding-top: 4px;

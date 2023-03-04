@@ -11,8 +11,7 @@ interface IProps {
     currentNoteId: number
 }
 const List: React.FC<IProps> = ({items, setCurrentNote, currentNoteId}) => {
-
-    const onChooseNote = (id:number): void => {
+    const onChooseNote = (id: number): void => {
         setCurrentNote(id)
     }
     return (
@@ -25,9 +24,9 @@ const List: React.FC<IProps> = ({items, setCurrentNote, currentNoteId}) => {
                 </div>
                 {items?.map((item) => {
                     return (
-                        <div className={currentNoteId == item.id ? s.selected : s.item} onClick={() => onChooseNote(item.id)}>
+                        <div className={currentNoteId === item.id ? s.selected : s.item} onClick={() => onChooseNote(item.id)} key={item.id}>
                             <div className={s.title}>{item.title}</div>
-                            <div>{item.text.text}</div>
+                            <div className={s.text}>{item.text.text}</div>
                         </div>
                     )
                 })}

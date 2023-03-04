@@ -11,9 +11,16 @@
     padding-bottom: 15px;
     border-bottom: 1px solid #464646;
 }
+
 .title{
     font-family: "SFBold";
     margin-top: 10px;
+}
+.title:hover {
+    cursor: pointer;
+}
+.text:hover {
+    cursor: default;
 }
 .selected {
     padding-left: 10px;
