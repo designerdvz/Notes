@@ -23,20 +23,19 @@ const List: React.FC<IProps> = ({
                                     setFindText,
                                     findText
                                 }) => {
-    const onChooseNote = (id: number): void => {
-        setCurrentNote(id)
+    const onChooseNote = (note): void => {
+        setCurrentNote(note)
     }
-
     return (
         <>
             {isList &&
                 <div className={s.wrapper}>
-                    {findText == "" ? items?.map((item) => {
+                    {findText === "" ? items?.map((item) => {
                         return (
                             <div className={currentNoteId === item?.id ? s.selected : s.item}
-                                 onClick={() => onChooseNote(item?.id)} key={item?.id}>
+                                 onClick={() => onChooseNote(item)} key={item?.id}>
                                 <div className={s.title}>{item?.title}</div>
-                                <div className={s.text}>{item?.text?.text.substr(0, 15)}
+                                <div className={s.text}>{item?.text?.text?.substr(0, 15)}
                                     <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
                                 </div>
                             </div>

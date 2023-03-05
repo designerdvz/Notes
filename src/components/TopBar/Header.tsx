@@ -27,8 +27,19 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
             }
         }
         setItems((prevArr) => {
-            return [...prevArr, newNote]
+            // if (prevArr.length) {
+                return [newNote, ...prevArr]
+            // }
+            // else return []
         })
+        // const savedItems = JSON.parse(localStorage.getItem('savedItems'))
+        // if (savedItems !== null) {
+        //     savedItems.push(newNote)
+        // } else savedItems=[newNote]
+        // if (localStorage.length) {
+        //     const savedItems = JSON.parse(localStorage.getItem('savedItems') || '')
+        //     // localStorage.setItem('savedItems', JSON.stringify(savedItems))
+        // }
     }
 
     const style = {
@@ -45,7 +56,7 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
         pb: 3,
     };
 
-        const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleChangeFindText = (event) => {
         setFindText(event.target.value)

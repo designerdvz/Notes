@@ -7,13 +7,13 @@ interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
 }
 
-const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
+const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote}) => {
     const [isEditing, setEditing] = useState(false);
     const [wasEdited, setWasEdited] = useState(false);
-    const [note, setNote] = useState<IItem | {}>({});
+    // const [note, setNote] = useState<IItem | {}>({});
 
     useEffect(() => {
-        setNote(currentNote)
+        // setNote(currentNote)
         setEditing(false)
     }, [currentNote?.id]);
 
@@ -23,19 +23,31 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
                 if (wasEdited) {
                     return [
                         {
-                            ...note
+                            ...currentNote
                         },
                         ...prev.filter((el) => el.id !== currentNote?.id)
                     ]
                 }
                 return prev
             })
+            // const getItemsFromLocalStorage = () => {
+            //     try {
+            //         return JSON.parse(localStorage.getItem('savedItems') || '');
+            //     } catch (error) {
+            //         return null;
+            //     }
+            // }
+            // const savedItems = getItemsFromLocalStorage()
+            // savedItems?.filter((el) => el.id !== currentNote?.id)
+            // savedItems?.push(note)
+            // localStorage.setItem('savedItems', JSON.stringify(savedItems))
             setWasEdited(false)
         }
+
     })
 
     const onHandleChange = (value) => {
-        setNote((prevState) => {
+        setCurrentNote((prevState) => {
             return {
                 ...prevState,
                 text: {
@@ -44,6 +56,7 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
                 }
             }
         });
+
     }
 
     return (
@@ -71,16 +84,16 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems}) => {
                         //     </div>
                         // </>
                         <MDEditor
-                            value={note?.text?.text}
+                            value={currentNote?.text?.text}
                             autoFocus={false}
                             onChange={(_, event) => onHandleChange(event?.target.value)}
                             previewOptions={{ skipHtml: true, escapeHtml: true, transformLinkUri: null, linkTarget: '_blank' }}
                         />
                         :
                         <>
-                            {/*<div className={s.content}>*/}
-                                <MDEditor.Markdown source={note?.text?.text} escapeHtml={true} skipHtml={true} transformLinkUri={null} />
-                            {/*</div>*/}
+
+                        <MDEditor.Markdown source={currentNote?.text?.text} escapeHtml={true} skipHtml={true} transformLinkUri={null} />
+
                         </>
                     }
                 </div>
