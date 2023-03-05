@@ -15,18 +15,21 @@ interface IProps {
     edit: boolean,
 }
 
-const BlockNotes: React.FC<IProps> = ({
-                                          items,
-                                          setCurrentNote,
-                                          currentNoteId,
-                                          setItems,
-                                          isList,
-                                          edit,
-                                          setEdit,
-                                          findText
-                                      }) => {
-    const onChooseNote = (id: number): void => {
-        setCurrentNote(id)
+const BlockNotes: React.FC<IProps> = (
+    {
+        items,
+        setCurrentNote,
+        setItems,
+        isList,
+        edit,
+        setEdit,
+        findText,
+        flag,
+        setFlag,
+        currentNote
+    }) => {
+    const onChooseNote = (note: IItem) => {
+        setCurrentNote(note);
     }
 
     const getCurrentNote = (items: IItem[], itemId: number): IItem | undefined => {
@@ -37,10 +40,10 @@ const BlockNotes: React.FC<IProps> = ({
         <>
             {!isList && !edit &&
                 <div className={s.wrapper}>
-                    {findText == "" ? items?.map((item) => {
+                    {findText === "" ? items?.map((item) => {
                         return (
-                            <div className={currentNoteId === item?.id ? s.selected : s.item}
-                                 onClick={() => onChooseNote(item?.id)} onDoubleClick={() => setEdit(true)}
+                            <div className={currentNote.id === item?.id ? s.selected : s.item}
+                                 onClick={() => onChooseNote(item)} onDoubleClick={() => setEdit(true)}
                                  key={item?.id}>
                                 <div className={s.title}>{item?.title}</div>
                                 <div className={s.text}>{item?.text?.text.substr(0, 15)}
@@ -50,9 +53,12 @@ const BlockNotes: React.FC<IProps> = ({
                         )
                     }) : items?.filter((el) => el.text.text.toLowerCase().indexOf(findText.toLowerCase()) >= 0).map((item) => {
                         return (
-                            <div className={currentNoteId === item?.id ? s.selected : s.item}
-                                 onClick={() => onChooseNote(item?.id)} onDoubleClick={() => setEdit(true)}
-                                 key={item?.id}>
+                            <div
+                                className={currentNote.id === item?.id ? s.selected : s.item}
+                                onClick={() => onChooseNote(item?.id)}
+                                onDoubleClick={() => setEdit(true)}
+                                key={item?.id}
+                            >
                                 <div className={s.title}>{item?.title}</div>
                                 <div className={s.text}>{item?.text?.text.substr(0, 15)}
                                     <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
@@ -67,7 +73,13 @@ const BlockNotes: React.FC<IProps> = ({
                 edit &&
                 <>
                     <div className={s.backToList} onClick={() => setEdit(false)}><ArrowBackIcon/></div>
-                    <ViewNote setItems={setItems} currentNote={getCurrentNote(items, currentNoteId)} setCurrentNote={setCurrentNote}/>
+                    <ViewNote
+                        setItems={setItems}
+                        currentNote={currentNote}
+                        setCurrentNote={setCurrentNote}
+                        flag={flag}
+                        setFlag={setFlag}
+                    />
                 </>
             }
         </>

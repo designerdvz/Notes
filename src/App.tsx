@@ -53,7 +53,7 @@ const App = () => {
     const [edit, setEdit] = useState(false)
     const [findText, setFindText] = useState('')
     const [items, setItems] = useState<IItem[]>([])
-    const [flag,setFlag]= useState(true)
+    const [flag, setFlag] = useState(true)
     useEffect(() => {
         if (localStorage.length) {
             const getItemsFromLocalStorage = () => {
@@ -72,26 +72,59 @@ const App = () => {
         localStorage.setItem('savedItems', JSON.stringify(items))
     }, [items.length, flag])
 
-    const getCurrentNote = (items: IItem[], itemId: number): IItem | undefined => {
-        return items?.find((el) => el?.id === itemId)
-    }
-    const getCurrentNoteId = (currentNote: IItem): number => {
-        if (currentNote) {
-            return currentNote.id
-        } else return 0
-    }
+    // const getCurrentNote = (items: IItem[], itemId: number): IItem | undefined => {
+    //     return items?.find((el) => el?.id === itemId)
+    // }
+    // const getCurrentNoteId = (currentNote: IItem): number => {
+    //     if (currentNote) {
+    //         return currentNote.id
+    //     } else return 0
+    // }
     return (
         <>
-            <Header setItems={setItems} setFindText={setFindText} findText={findText} currentNoteId={currentNote.id}
-                    isList={isList} setIsList={setIsList} setEdit={setEdit}/>
+            <Header
+                setItems={setItems}
+                setFindText={setFindText}
+                findText={findText}
+                currentNoteId={currentNote.id}
+                isList={isList}
+                setIsList={setIsList}
+                setEdit={setEdit}
+            />
             <div className="wrapper">
-                <List items={items} setItems={setItems} setFindText={setFindText} findText={findText}
-                      setCurrentNote={setCurrentNote} currentNoteId={currentNote?.id} isList={isList}
-                      setIsList={setIsList}/>
-                <BlockNote items={items} setItems={setItems} setFindText={setFindText} findText={findText}
-                           setCurrentNote={setCurrentNote} currentNoteId={currentNote?.id} isList={isList}
-                           setIsList={setIsList} edit={edit} setEdit={setEdit}/>
-                {isList && <ViewNote setItems={setItems} currentNote={currentNote} flag={flag} setFlag={setFlag} setCurrentNote={setCurrentNote}/>}
+                <List
+                    items={items}
+                    setItems={setItems}
+                    setFindText={setFindText}
+                    findText={findText}
+                    setCurrentNote={setCurrentNote}
+                    currentNoteId={currentNote?.id}
+                    isList={isList}
+                    setIsList={setIsList}/>
+
+                <BlockNote
+                    items={items}
+                    setItems={setItems}
+                    setFindText={setFindText}
+                    findText={findText}
+                    setCurrentNote={setCurrentNote}
+                    currentNote={currentNote}
+                    isList={isList}
+                    setIsList={setIsList}
+                    edit={edit}
+                    setEdit={setEdit}
+                    flag={flag}
+                    setFlag={setFlag}
+                />
+                {
+                    isList && <ViewNote
+                    setItems={setItems}
+                    currentNote={currentNote}
+                    flag={flag}
+                    setFlag={setFlag}
+                    setCurrentNote={setCurrentNote}
+                    />
+                }
             </div>
         </>
     )
