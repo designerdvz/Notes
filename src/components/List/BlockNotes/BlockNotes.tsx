@@ -9,10 +9,12 @@ interface IProps {
     setCurrentNote: React.Dispatch<React.SetStateAction<IItem>>,
     setEdit: React.Dispatch<React.SetStateAction<boolean>>,
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>,
-    findText: string
-    currentNoteId: number,
+    findText: string,
     isList: boolean,
     edit: boolean,
+    flag: boolean,
+    setFlag: React.Dispatch<React.SetStateAction<boolean>>,
+    currentNote: IItem
 }
 
 const BlockNotes: React.FC<IProps> = (
@@ -32,9 +34,6 @@ const BlockNotes: React.FC<IProps> = (
         setCurrentNote(note);
     }
 
-    const getCurrentNote = (items: IItem[], itemId: number): IItem | undefined => {
-        return items?.find((el) => el.id === itemId)
-    }
 
     return (
         <>
@@ -55,7 +54,7 @@ const BlockNotes: React.FC<IProps> = (
                         return (
                             <div
                                 className={currentNote.id === item?.id ? s.selected : s.item}
-                                onClick={() => onChooseNote(item?.id)}
+                                onClick={() => onChooseNote(item)}
                                 onDoubleClick={() => setEdit(true)}
                                 key={item?.id}
                             >

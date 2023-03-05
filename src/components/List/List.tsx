@@ -8,22 +8,20 @@ import ModalDelete from "../Modal/Modal"
 
 interface IProps {
     items: IItem[],
-    setCurrentNote: React.Dispatch<React.SetStateAction<number>>,
+    setCurrentNote: React.Dispatch<React.SetStateAction<IItem>>,
     currentNoteId: number,
-    setItems: React.Dispatch<React.SetStateAction<IItem[]>>
+    isList: boolean,
+    findText: string
 }
 
 const List: React.FC<IProps> = ({
                                     items,
                                     setCurrentNote,
                                     currentNoteId,
-                                    setItems,
                                     isList,
-                                    setIsList,
-                                    setFindText,
                                     findText
                                 }) => {
-    const onChooseNote = (note): void => {
+    const onChooseNote = (note: IItem): void => {
         setCurrentNote(note)
     }
     return (
@@ -43,7 +41,7 @@ const List: React.FC<IProps> = ({
                     }) : items?.filter((el) => el.text.text.toLowerCase().indexOf(findText.toLowerCase()) >= 0).map((item) => {
                         return (
                             <div className={currentNoteId === item?.id ? s.selectedFound : s.itemFound}
-                                 onClick={() => onChooseNote(item?.id)}
+                                 onClick={() => onChooseNote(item)}
                                  key={item?.id}>
                                 <div className={s.title}>{item?.title}</div>
                                 <div className={s.text}>{item?.text?.text.substr(0, 15)}

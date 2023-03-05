@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from 'react';
 import s from "./ViewNote.module.css"
 import {IItem} from "../../App";
 import MDEditor from "@uiw/react-md-editor"
-import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>,
@@ -40,7 +39,7 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote, flag,
         }
     })
 
-    const onHandleChange = (value:string) => {
+    const onHandleChange = (value:string | undefined) => {
         setCurrentNote((prevState) => {
             return {
                 ...prevState,
@@ -55,25 +54,23 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote, flag,
 
     return (
         <>
-            <div className={s.wrapper}>
+            <div className={s.wrapper} onClick={() => setWasEdited(true)}>
                 <div onClick={() => {
                     setEditing(true)
+                    setWasEdited(true)
                 }} onKeyDown={() => {
                     setWasEdited(true)
-                }}    onBlur={()=> {
-                    setEditing(false)
-                }
-                }>
+                }}   >
                     {isEditing ?
                         <MDEditor
                             value={currentNote?.text?.text}
                             autoFocus={false}
                             onChange={(_, event) => onHandleChange(event?.target.value)}
-                            previewOptions={{ skipHtml: true, escapeHtml: true, transformLinkUri: null, linkTarget: '_blank' }}
+                            previewOptions={{ skipHtml: true, transformLinkUri: null, linkTarget: '_blank' }}
                         />
                         :
                         <>
-                        <MDEditor.Markdown source={currentNote?.text?.text} escapeHtml={true} skipHtml={true} transformLinkUri={null} />
+                        <MDEditor.Markdown source={currentNote?.text?.text} skipHtml={true} transformLinkUri={null} />
                         </>
                     }
                 </div>

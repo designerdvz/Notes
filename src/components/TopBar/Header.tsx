@@ -12,7 +12,14 @@ import ModalDelete from "../Modal/Modal";
 
 interface Props {
     setItems: React.Dispatch<React.SetStateAction<IItem[]>>
+    currentNoteId: number,
+    isList: boolean,
+    setIsList: React.Dispatch<React.SetStateAction<boolean>>,
+    setEdit: React.Dispatch<React.SetStateAction<boolean>>,
+    setFindText: React.Dispatch<React.SetStateAction<string>>,
+    findText: string
 }
+
 
 const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, setEdit,setFindText, findText}) => {
     const addNewNote = () => {
@@ -27,19 +34,9 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
             }
         }
         setItems((prevArr) => {
-            // if (prevArr.length) {
                 return [newNote, ...prevArr]
-            // }
-            // else return []
         })
-        // const savedItems = JSON.parse(localStorage.getItem('savedItems'))
-        // if (savedItems !== null) {
-        //     savedItems.push(newNote)
-        // } else savedItems=[newNote]
-        // if (localStorage.length) {
-        //     const savedItems = JSON.parse(localStorage.getItem('savedItems') || '')
-        //     // localStorage.setItem('savedItems', JSON.stringify(savedItems))
-        // }
+
     }
 
     const style = {
@@ -58,8 +55,8 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
 
     const [open, setOpen] = useState(false);
 
-    const handleChangeFindText = (event) => {
-        setFindText(event.target.value)
+    const handleChangeFindText = (event: React.FormEvent<HTMLInputElement>) => {
+        setFindText(event.currentTarget.value)
     }
     return (
         <>
@@ -68,7 +65,7 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
                 <span className={isList? s.listSelect : s.listImg} onClick={() => {
                     setIsList(true)
                     setEdit(false)
-                }}><FormatListBulletedOutlinedIcon color="#dadada"/></span>
+                }}><FormatListBulletedOutlinedIcon /></span>
                 <span className={isList? s.squareImg : s.squareSelect} onClick={()=> {setIsList(false)
                     setEdit(false)
                 }}><GridViewOutlinedIcon /></span>
