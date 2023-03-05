@@ -25,29 +25,26 @@ const ModalDelete = ({setItems, currentNoteId, open, setOpen}) => {
     };
 
     const deleteNote = (currentNoteId) => {
-
-        {
-           setItems((prev) => {
-                return [
-                    ...prev.filter((el) => el.id !== currentNoteId)
-                ]
-            })
-
-     }
-        }
+        setItems((prev) => {
+            return [
+                ...prev.filter((el) => el.id !== currentNoteId)
+            ]
+        })
+    }
 
     return (
         <Modal open={open} onClose={handleClose}>
-                    <Box sx={{ ...style}}>
-                        <h2 className={s.moduleText}>Удалить заметку?</h2>
-                        <span className={s.moduleDelete} onClick={() => {
-                            deleteNote(currentNoteId)
-                            setOpen(false)
-                        }
-                        }>Да</span>
-                        <span className={s.moduleNotDelete} onClick={() => {setOpen(false)
-                        } }>Нет</span>
-                    </Box>
+            <Box sx={{...style}}>
+                <h2 className={s.moduleText}>Удалить заметку?</h2>
+                <span className={s.moduleDelete} onClick={() => {
+                    deleteNote(currentNoteId)
+                    setOpen(false)
+                }
+                }>Да</span>
+                <span className={s.moduleNotDelete} onClick={() => {
+                    setOpen(false)
+                }}>Нет</span>
+            </Box>
         </Modal>
     )
 }

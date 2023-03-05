@@ -4,10 +4,11 @@ import {IItem} from "../../App";
 import MDEditor from "@uiw/react-md-editor"
 
 interface Props {
-    setItems: React.Dispatch<React.SetStateAction<IItem[]>>
+    setItems: React.Dispatch<React.SetStateAction<IItem[]>>,
+    currentNote: IItem,
 }
 
-const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote}) => {
+const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote,flag,setFlag}) => {
     const [isEditing, setEditing] = useState(false);
     const [wasEdited, setWasEdited] = useState(false);
     // const [note, setNote] = useState<IItem | {}>({});
@@ -30,20 +31,9 @@ const ViewNote: React.FC<Props> = ({currentNote, setItems, setCurrentNote}) => {
                 }
                 return prev
             })
-            // const getItemsFromLocalStorage = () => {
-            //     try {
-            //         return JSON.parse(localStorage.getItem('savedItems') || '');
-            //     } catch (error) {
-            //         return null;
-            //     }
-            // }
-            // const savedItems = getItemsFromLocalStorage()
-            // savedItems?.filter((el) => el.id !== currentNote?.id)
-            // savedItems?.push(note)
-            // localStorage.setItem('savedItems', JSON.stringify(savedItems))
+            setFlag(!flag)
             setWasEdited(false)
         }
-
     })
 
     const onHandleChange = (value) => {
