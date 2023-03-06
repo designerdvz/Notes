@@ -7,7 +7,6 @@ import BlockNote from "./components/List/BlockNotes/BlockNotes"
 
 export interface IItem {
     id: number,
-    title: string,
     time: string;
     text: {
         text: string | undefined,

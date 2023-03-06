@@ -44,13 +44,13 @@ const BlockNotes: React.FC<IProps> = (
                             <div className={currentNote.id === item?.id ? s.selected : s.item}
                                  onClick={() => onChooseNote(item)} onDoubleClick={() => setEdit(true)}
                                  key={item?.id}>
-                                <div className={s.title}>{item?.title}</div>
-                                <div className={s.text}>{item?.text?.text.substr(0, 15)}
-                                    <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
+                                <div className={s.title}>{item?.text?.text?.substr(0, 9)}</div>
+                                <div className={s.text}>{item?.text?.text?.substr(0, 15)}
+                                    <span>{item?.text?.text!.length > 15 ? '...' : ''}</span>
                                 </div>
                             </div>
                         )
-                    }) : items?.filter((el) => el.text.text.toLowerCase().indexOf(findText.toLowerCase()) >= 0).map((item) => {
+                    }) : items?.filter((el) => el?.text?.text!.toLowerCase()?.indexOf(findText.toLowerCase()) >= 0).map((item) => {
                         return (
                             <div
                                 className={currentNote.id === item?.id ? s.selected : s.item}
@@ -58,9 +58,9 @@ const BlockNotes: React.FC<IProps> = (
                                 onDoubleClick={() => setEdit(true)}
                                 key={item?.id}
                             >
-                                <div className={s.title}>{item?.title}</div>
-                                <div className={s.text}>{item?.text?.text.substr(0, 15)}
-                                    <span>{item?.text?.text.length > 15 ? '...' : ''}</span>
+                                <div className={s.title}>{item?.text?.text?.substr(0, 9)}</div>
+                                <div className={s.text}>{item?.text?.text?.substr(0, 15)}
+                                    <span>{item?.text?.text!.length > 15 ? '...' : ''}</span>
                                 </div>
                             </div>
                         )

@@ -11,6 +11,17 @@
     font-style: normal;
     font-weight: normal;
 }
+:root {
+    --my-size: 20px;
+}
+p{
+    font-size: var(--my-size);
+}
+.w-md-editor-text-pre > code,
+.w-md-editor-text-preview {
+    font-size: var(--my-size) !important;
+    line-height: 24px !important;
+}
 
 #root{
     color: #dadada;

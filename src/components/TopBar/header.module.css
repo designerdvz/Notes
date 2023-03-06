@@ -43,6 +43,25 @@
     color: #dadada;
     background-color: #222327;
 }
+select{
+    border: none;
+    background-color: #222327;
+    color: #dadada;
+}
+select:focus{
+    border: none;
+    background-color: #222327;
+}
+option{
+    border: none;
+    background-color: #222327;
+    text-align: center;
+}
+.test {
+    --var-width: 100px;
+    width: var(--var-width);
+    background-color: red; /* для наглядности */
+}
 .listSelect svg{
     background-color:  #464646;
     margin-right: 15px;

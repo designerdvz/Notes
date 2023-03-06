@@ -54,10 +54,18 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
     };
 
     const [open, setOpen] = useState(false);
+    const [value, setValue]
+        = useState('16');
+
+    function handleChange(event) {
+        setValue(event.target.value);
+    }
+    document.documentElement.style.setProperty('--my-size', `${value}px`);
 
     const handleChangeFindText = (event: React.FormEvent<HTMLInputElement>) => {
         setFindText(event.currentTarget.value)
     }
+
     return (
         <>
         <div className={s.wrapper}>
@@ -77,6 +85,13 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
             <div className={s.rightBar}>
                 <span className={s.addImg} onClick={addNewNote}><PostAddOutlinedIcon/></span>
                 <span className={s.registerImg}><FormatSizeOutlinedIcon/></span>
+                <select value={value}
+                        onChange={handleChange}>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                    <option selected value="24">24</option>
+                    <option value="28">28</option>
+                </select>
                 <div className={s.finder}>
                       <span className={s.finderImg}><SearchOutlinedIcon fontSize="small"/></span>
                     <input value={findText} onChange={handleChangeFindText} className={s.finderInput} placeholder="Поиск"/>
