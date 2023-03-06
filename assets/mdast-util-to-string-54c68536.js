@@ -1,0 +1,1 @@
+function f(n,t){const o=(t||{}).includeImageAlt;return e(n,typeof o=="boolean"?o:!0)}function e(n,t){return c(n)&&("value"in n&&n.value||t&&"alt"in n&&n.alt||"children"in n&&i(n.children,t))||Array.isArray(n)&&i(n,t)||""}function i(n,t){const o=[];let r=-1;for(;++r<n.length;)o[r]=e(n[r],t);return o.join("")}function c(n){return Boolean(n&&typeof n=="object")}export{f as t};
