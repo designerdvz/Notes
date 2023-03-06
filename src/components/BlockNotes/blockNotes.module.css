@@ -6,11 +6,13 @@
     grid-column-gap: 10px;
     grid-row-gap: 1em;
 }
+
 .backToList{
     margin-top: 10px;
     margin-left: 5px;
     margin-right: 10px;
 }
+
 .item {
     background-color: #222327;
     padding-left: 10px;
@@ -23,12 +25,15 @@
     font-family: "SFBold";
     margin-top: 10px;
 }
+
 .title:hover {
     cursor: pointer;
 }
+
 .text:hover {
     cursor: default;
 }
+
 .selected {
     padding-left: 10px;
     background-color: #464646;
@@ -37,9 +42,11 @@
     border-radius: 5px;
     border-bottom: 1px solid gray;
 }
+
 .selected {
     background-color: #464646;
 }
+
 .selected div{
     background-color: #464646;
 }

@@ -2,6 +2,7 @@
     display: flex;
     height: 30px;
 }
+
 .leftBar{
     margin-left: 7px;
     overflow: hidden;
@@ -15,13 +16,16 @@
     overflow: hidden;
     width: 79%;
 }
+
 .listImg{
     height: 21px;
     margin-right: 15px;
 }
+
 .squareImg{
     height: 20px;
 }
+
 .basketImg{
     height: 21px;
     float: right;
@@ -36,6 +40,7 @@
     height: 20px;
     margin-left: 7vw;
 }
+
 .finder input {
     padding-top: 4px;
     border: none;
@@ -43,15 +48,18 @@
     color: #dadada;
     background-color: #222327;
 }
+
 select{
     border: none;
     background-color: #222327;
     color: #dadada;
 }
+
 select:focus{
     border: none;
     background-color: #222327;
 }
+
 option{
     border: none;
     background-color: #222327;
@@ -63,10 +71,12 @@ option{
     margin-right: 15px;
     border-radius: 3px;
 }
+
 .squareSelect svg{
     background-color:  #464646;
     border-radius: 3px;
 }
+
 .finder{
     display: flex;
     margin-bottom: 10px;

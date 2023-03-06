@@ -1,16 +1,11 @@
-import s from "../Modal/modal.module.css";
-import {IItem} from "../../App";
-import React, {useEffect, useState} from "react";
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
+import s from '../Modal/modal.module.css'
+import {IItem} from '../../types/types'
+import React from 'react'
+import Modal from '@mui/material/Modal'
+import Box from '@mui/material/Box'
+import {IPropsModal} from '../../types/types'
 
-interface Props {
-    setItems: React.Dispatch<React.SetStateAction<IItem[]>>,
-    currentNoteId: number,
-    open: boolean,
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-const ModalDelete: React.FC<Props>  = ({setItems, currentNoteId, open, setOpen}) => {
+const ModalDelete: React.FC<IPropsModal> = ({setItems, currentNoteId, open, setOpen}) => {
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -23,14 +18,14 @@ const ModalDelete: React.FC<Props>  = ({setItems, currentNoteId, open, setOpen})
         pt: 2,
         px: 4,
         pb: 3,
-    };
+    }
 
     const handleClose = () => {
         setOpen(false);
-    };
+    }
 
-    const deleteNote = (currentNoteId:number) => {
-        setItems((prev:IItem[]) => {
+    const deleteNote = (currentNoteId: number) => {
+        setItems((prev: IItem[]) => {
             return [
                 ...prev.filter((el) => el.id !== currentNoteId)
             ]

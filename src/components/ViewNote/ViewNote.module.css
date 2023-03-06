@@ -1,14 +1,16 @@
 .wrapper{
     background-color: #1e1e1e;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     border-left: 2px solid black;
 }
+
 .content{
     padding-left: 20px;
     background-color: #1e1e1e;
     width: 85%;
 }
+
 .title{
     margin-top: 20px;
     background-color: #1e1e1e;
@@ -26,6 +28,7 @@ textarea {
     overflow: hidden;
     max-height: 800px;
 }
+
 textarea:focus {
     border: none;
     outline: none;
