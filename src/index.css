@@ -13,9 +13,11 @@
 }
 :root {
     --my-size: 20px;
+    --my-align: center
 }
 p{
     font-size: var(--my-size);
+    text-align: var(--my-align);
 }
 .w-md-editor-text-pre > code,
 .w-md-editor-text-preview {

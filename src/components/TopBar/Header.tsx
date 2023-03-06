@@ -54,13 +54,19 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
     };
 
     const [open, setOpen] = useState(false);
-    const [value, setValue]
+    const [sizeValue, setSizeValue]
         = useState('16');
+    const [alignValue, setAlignValue]
+        = useState('left');
 
-    function handleChange(event) {
-        setValue(event.target.value);
+    function handleSizeChange(event) {
+        setSizeValue(event.target.value);
     }
-    document.documentElement.style.setProperty('--my-size', `${value}px`);
+    function handleAlignChange(event) {
+        setAlignValue(event.target.value);
+    }
+    document.documentElement.style.setProperty('--my-size', `${sizeValue}px`);
+    document.documentElement.style.setProperty('--my-align', `${alignValue}`);
 
     const handleChangeFindText = (event: React.FormEvent<HTMLInputElement>) => {
         setFindText(event.currentTarget.value)
@@ -85,12 +91,18 @@ const Header: React.FC<Props> = ({setItems, currentNoteId, isList, setIsList, se
             <div className={s.rightBar}>
                 <span className={s.addImg} onClick={addNewNote}><PostAddOutlinedIcon/></span>
                 <span className={s.registerImg}><FormatSizeOutlinedIcon/></span>
-                <select value={value}
-                        onChange={handleChange}>
+                <select value={sizeValue}
+                        onChange={handleSizeChange}>
                     <option value="16">16</option>
                     <option value="20">20</option>
                     <option selected value="24">24</option>
                     <option value="28">28</option>
+                </select>
+                <select value={alignValue}
+                        onChange={handleAlignChange}>
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option selected value="center">center</option>
                 </select>
                 <div className={s.finder}>
                       <span className={s.finderImg}><SearchOutlinedIcon fontSize="small"/></span>
